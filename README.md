@@ -33,7 +33,8 @@ Note: Please backup your running source code and database first.
         
         Enter all the required fields.
         ![alt text](https://github.com/paykun-code/Opencart-V3.X/blob/master/screenshots/Extensions-Credentials-enter.png)
-            
+  
+  4. Then click on save button to save all the settings.               
 Now you will be able to see Paykun Payment method in the checkout page.
 
 #<h3> In case of any query, please contact to support@paykun.com.</h3>  
