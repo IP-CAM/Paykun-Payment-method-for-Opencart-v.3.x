@@ -23,14 +23,17 @@ Note: Please backup your running source code and database first.
      on the location yourwebsite-opencart-installed-path/override admin directory and other too.   
   3. Now login to the admin panel and do same as given in screen shot.
         
-        ![alt text](https://github.com/paykun-code/Opencart-2.X/blob/master/screenshots/Dashboard-extension-payments.png)
+        ![alt text](https://github.com/paykun-code/Opencart-V3.X/blob/master/screenshots/Dashboard1.png)
         
-        Find Paykun Payment and follow below screen shot
-        ![alt text](https://github.com/paykun-code/Opencart-2.X/blob/master/screenshots/Payments-install-and-enter-all.png)
+        Select Payment extension from the dropdown
+        ![alt text](https://github.com/paykun-code/Opencart-V3.X/blob/master/screenshots/Extensions-Payment-selection.png)
         
-        Enter Configurations.
-        ![alt text](https://github.com/paykun-code/Opencart-2.X/blob/master/screenshots/Entering-credentials.png)
-
+        Click first on Install and then Edit button  
+        ![alt text](https://github.com/paykun-code/Opencart-V3.X/blob/master/screenshots/Extensions-installation-enter-credentials.png)
+        
+        Enter all the required fields.
+        ![alt text](https://github.com/paykun-code/Opencart-V3.X/blob/master/screenshots/Extensions-Credentials-enter.png)
+            
 Now you will be able to see Paykun Payment method in the checkout page.
 
 #<h3> In case of any query, please contact to support@paykun.com.</h3>  
