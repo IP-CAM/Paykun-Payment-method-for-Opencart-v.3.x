@@ -256,7 +256,7 @@ class ControllerExtensionPaymentPaykun extends Controller {
             //compare amount
                 $resAmout = $response['data']['transaction']['order']['gross_amount'];
                 $orderInfo = $this->model_checkout_order->getOrder($order_id);
-                if(($orderInfo['total']	== $resAmout)) {
+                if((intval($orderInfo['total'])	== intval($resAmout))) {
 
                     $data['text_response'] = $this->language->get('text_response');
                     $data['text_success'] = $this->language->get('text_success');
