@@ -14,7 +14,6 @@ Note : Once you re-generate api key your old api key will stop working immediate
     Merchant Id (Please read 'How To Generate Access token and API Secret :')
     Access Token (Please read 'How To Generate Access token and API Secret :')
     Encryption Key (Please read 'How To Generate Access token and API Secret :')
-    Wordpress 4.x compatible Woo-Commerce version must be installed and other payment method working properly.
 
 # <h3>Installation</h3>
 Note: Please backup your running source code and database first.
