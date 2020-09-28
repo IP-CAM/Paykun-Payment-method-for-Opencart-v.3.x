@@ -44,6 +44,7 @@ class Payment {
     public $udf_3;
     public $udf_4;
     public $udf_5;
+    private $currency = 'INR';
     /**
      * Payment constructor.
      * @param string $mid           => Id of the Merchant
@@ -101,7 +102,7 @@ class Payment {
      */
 
 
-    public function initOrder ($orderId, $purpose, $amount, $successUrl, $failureUrl) {
+    public function initOrder ($orderId, $purpose, $amount, $successUrl, $failureUrl, $currency = 'INR') {
 
         if (Validator::VALIDATE_ORDER_NUMBER($orderId)) {
 
@@ -116,36 +117,13 @@ class Payment {
                 ErrorCodes::INVALID_PURPOSE_CODE, null);
         }
 
-        if (Validator::VALIDATE_AMOUNT($amount)) {
-            $this->log->write("Error in the field Amount => ".$amount);
-            throw new ValidationException(ErrorCodes::INVALID_AMOUNT_STRING,
-                ErrorCodes::INVALID_AMOUNT_CODE, null);
-        }
-
-        if (Validator::VALIDATE_URL($successUrl)) {
-            $this->log->write("Error in the field Success Url => ".$successUrl);
-            throw new ValidationException(ErrorCodes::INVALID_SUCCESS_URL_STRING,
-                ErrorCodes::INVALID_SUCCESS_URL_CODE, null);
-        }
-
-        /*if (Validator::VALIDATE_URL($successUrl)) {
-            throw new ValidationException(ErrorCodes::INVALID_SUCCESS_URL_STRING,
-                ErrorCodes::INVALID_SUCCESS_URL_CODE, null);
-        }*/
-
-
-        if (Validator::VALIDATE_URL($failureUrl)) {
-            $this->log->write("Error in the field Failed Url => ".$failureUrl);
-            throw new ValidationException(ErrorCodes::INVALID_FAIL_URL_STRING,
-                ErrorCodes::INVALID_FAIL_URL_CODE, null);
-        }
-
         $this->orderId      = $orderId;
         $this->purpose      = $purpose;
         $this->amount       = $amount;
         $this->successUrl   = $successUrl;
         $this->failureUrl   = $failureUrl;
         $this->isPassedValidationForInitOrder = true;
+        $this->currency = $currency;
         return $this;
 
     }
@@ -316,9 +294,7 @@ class Payment {
         if (
             $this->isPassedValidationForConstructor &&
             $this->isPassedValidationForInitOrder &&
-            $this->isPassedValidationForCustomer &&
-            $this->isPassedValidationForShipping &&
-            $this->isPassedValidationForBilling
+            $this->isPassedValidationForCustomer
         ) {
 
             $dataArray                      = array();
@@ -345,6 +321,7 @@ class Payment {
             $dataArray['udf_3']             = $this->udf_3 ? $this->udf_3 : '';
             $dataArray['udf_4']             = $this->udf_4 ? $this->udf_4 : '';
             $dataArray['udf_5']             = $this->udf_5 ? $this->udf_5 : '';
+            $dataArray['currency']          = $this->currency;
 
             $encryptedData = $this->encryptData($dataArray);
             return $this->createForm($encryptedData);

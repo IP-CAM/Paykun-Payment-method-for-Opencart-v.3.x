@@ -42,14 +42,14 @@ class ControllerExtensionPaymentPaykun extends Controller {
 
 		$pkdata = $this->initPayment($this->getOrderDetail($order_info));
 
-		if($order_info['currency_code'] != "INR"){
+		/*if($order_info['currency_code'] != "INR"){
 		    echo $order_info['currency_code'];
             echo "Only Indian (INR) currency is allowed. Please change your store currency settings.";
             exit;
-            /*Do not allow transaction if currency is not indian*/
+            //Do not allow transaction if currency is not indian
             //trigger error message
 
-		}
+		}*/
 
 		$data['action'] = $this->config->get('payment_paykun_transaction_url');
 		$data['button_confirm'] = $this->language->get('button_confirm');
@@ -100,7 +100,7 @@ class ControllerExtensionPaymentPaykun extends Controller {
 
             // Initializing Order
             $obj->initOrder($orderDetail['orderId'], $orderDetail['purpose'], $orderDetail['amount'],
-                $orderDetail['successUrl'], $orderDetail['failureUrl']);
+                $orderDetail['successUrl'], $orderDetail['failureUrl'], $orderDetail['currency']);
 
             // Add Customer
             $obj->addCustomer($orderDetail['customerName'], $orderDetail['customerEmail'], $orderDetail['customerMoNo']);
@@ -192,6 +192,7 @@ class ControllerExtensionPaymentPaykun extends Controller {
                 "b_city"  => $orderInfo["payment_city"],
                 "b_pinCode"   => $orderInfo["payment_postcode"],
                 "b_addressString" => $orderInfo["payment_address_1"].$orderInfo["payment_address_2"],
+                "currency" => $orderInfo['currency_code']
                 /*Billing detail over*/
             ];
 
